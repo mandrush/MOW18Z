@@ -20,6 +20,7 @@ paramsPor <- paramsPor[complete.cases(paramsPor), ]
 
 #joined data
 data <- rbind(paramsMat, paramsPor)
+duplicated(data)
 
 #partition the data (p = ratio between training and the testing data)
 inTrain <- createDataPartition(y = data$Dalc,
@@ -27,3 +28,6 @@ inTrain <- createDataPartition(y = data$Dalc,
                                list = FALSE)
 training <- data[ inTrain,]
 testing <- data[-inTrain,]
+
+#weekModel <- lm(Walc ~ school+sex+age+address+famsize+Pstatus+Medu+Fedu+Mjob+Fjob+reason+guardian+traveltime+studytime+failures+schoolsup+famsup+paid+activities+nursery+higher+internet+romantic+famrel+freetime+goout+health+absences+G1+G2+G3,
+#                     data=training)
